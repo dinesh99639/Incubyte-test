@@ -7,6 +7,9 @@ describe("Add function", () => {
 
   test("Return sum if comma separated values are passed", () => {
     expect(add("1")).toBe(1);
-    expect(add("1,5")).toBe(6);
+  });
+
+  test("Return sum even if new lines are present instead of commas", () => {
+    expect(add("1 \n2, 3")).toBe(6);
   });
 });

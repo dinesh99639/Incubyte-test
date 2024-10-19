@@ -3,9 +3,11 @@ const add = (numbers) => {
     return 0;
   }
 
-  const array = numbers.split(",");
+  const array = numbers.replace("\n", ",").split(",");
 
-  return array.reduce((total, numString) => total + parseInt(numString), 0);
+  return array.reduce((total, numString) => {
+    return total + parseInt(numString.trim());
+  }, 0);
 };
 
 module.exports = add;
