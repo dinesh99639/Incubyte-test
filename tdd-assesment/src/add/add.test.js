@@ -19,4 +19,9 @@ describe("Add function", () => {
     expect(add("//;  \n1;2")).toBe(3);
     expect(add("// ;  \n 1 ; 2")).toBe(3);
   });
+
+  test("Throws exception if the string contains negative numbers", () => {
+    expect(() => add("1 \n2, -3")).toThrow("negative numbers not allowed -3");
+    expect(() => add("-1 \n2, 3")).toThrow("negative numbers not allowed -1");
+  });
 });

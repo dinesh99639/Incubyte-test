@@ -14,7 +14,11 @@ const add = (numbers) => {
   const array = numbers.replaceAll("\n", delimiter).split(delimiter);
 
   return array.reduce((total, numString) => {
-    return total + parseInt(numString.trim());
+    const num = numString.trim();
+
+    if (num[0] === "-") throw new Error("negative numbers not allowed " + num);
+
+    return total + parseInt(num);
   }, 0);
 };
 
