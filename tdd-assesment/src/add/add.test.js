@@ -11,5 +11,6 @@ describe("Add function", () => {
 
   test("Return sum even if new lines are present instead of commas", () => {
     expect(add("1 \n2, 3")).toBe(6);
+    expect(add("1\n2 \n 3")).toBe(6);
   });
 });
