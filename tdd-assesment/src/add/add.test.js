@@ -13,4 +13,10 @@ describe("Add function", () => {
     expect(add("1 \n2, 3")).toBe(6);
     expect(add("1\n2 \n 3")).toBe(6);
   });
+
+  test("Split the numbers based on the custom delimiter", () => {
+    expect(add("//;\n1;2")).toBe(3);
+    expect(add("//;  \n1;2")).toBe(3);
+    expect(add("// ;  \n 1 ; 2")).toBe(3);
+  });
 });
