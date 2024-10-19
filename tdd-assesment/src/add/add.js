@@ -3,7 +3,9 @@ const add = (numbers) => {
     return 0;
   }
 
+  const negatives = [];
   let delimiter = ",";
+
   if (numbers.slice(0, 2) === "//") {
     const index = numbers.indexOf("\n");
 
@@ -12,14 +14,21 @@ const add = (numbers) => {
   }
 
   const array = numbers.replaceAll("\n", delimiter).split(delimiter);
-
-  return array.reduce((total, numString) => {
+  const res = array.reduce((total, numString) => {
     const num = numString.trim();
 
-    if (num[0] === "-") throw new Error("negative numbers not allowed " + num);
+    if (num[0] === "-") {
+      negatives.push(num);
+    }
 
     return total + parseInt(num);
   }, 0);
+
+  if (negatives.length) {
+    throw new Error("negative numbers not allowed " + negatives.join(", "));
+  }
+
+  return res;
 };
 
 module.exports = add;
